@@ -3,164 +3,295 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TrueBilling - Home Preview</title>
+<title>True Billing Solutions - Home Preview</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#faf9f6;
-    --surface:#f2ede3;
-    --ink:#161119;
-    --muted:#6b6558;
-    --emerald:#3f2e5e;
-    --emerald-dark:#2c1f42;
-    --gold:#d9793b;
-    --line:rgba(22,17,25,0.12);
+    --bg:#f5faff;
+    --surface:#eaf4fc;
+    --ink:#0b2545;
+    --muted:#5b7186;
+    --blue:#0b63ce;
+    --blue-dark:#083a7a;
+    --lightblue:#4fb3e8;
+    --line:rgba(11,37,69,0.12);
     --white:#ffffff;
   }
   [data-theme="dark"]{
-    --bg:#141018;
-    --surface:#1d1822;
-    --ink:#f2eee6;
-    --muted:#a89f8f;
-    --emerald:#8a72c4;
-    --emerald-dark:#7360a8;
-    --gold:#eb9a5a;
-    --line:rgba(242,238,230,0.14);
-    --white:#1d1822;
+    --bg:#0a1626;
+    --surface:#0f2038;
+    --ink:#eaf2fb;
+    --muted:#8fa5bc;
+    --blue:#4c9bf0;
+    --blue-dark:#3a82d4;
+    --lightblue:#7cc6f2;
+    --line:rgba(234,242,251,0.14);
+    --white:#0f2038;
   }
   *{box-sizing:border-box;}
-  body{margin:0;background:var(--bg);color:var(--ink);transition:background .3s ease,color .3s ease;font-family:'Inter',Arial,sans-serif;background-image:radial-gradient(var(--line) 1px, transparent 1px);background-size:28px 28px;}
-  .tbh-serif{font-family:'Playfair Display',Georgia,serif;}
+  body{margin:0;background:var(--bg);color:var(--ink);transition:background .3s ease,color .3s ease;font-family:'Inter',Arial,sans-serif;}
+  .tbh-heading{font-family:'Poppins',Arial,sans-serif;}
   .tbh-fade{opacity:0;transform:translateY(28px);transition:opacity .7s ease, transform .7s ease;}
   .tbh-fade.tbh-in{opacity:1;transform:translateY(0);}
-  .tbh-eyebrow{display:flex;align-items:center;gap:12px;color:var(--gold);font-size:13px;letter-spacing:2px;text-transform:uppercase;font-weight:500;margin-bottom:20px;}
-  .tbh-eyebrow::before{content:'';width:32px;height:1px;background:var(--gold);}
-  .tbh-h2-accent{color:var(--emerald);font-style:italic;}
+  .tbh-eyebrow{display:flex;align-items:center;gap:10px;color:var(--blue);font-size:13px;letter-spacing:1.5px;text-transform:uppercase;font-weight:600;margin-bottom:16px;}
+  .tbh-eyebrow::before{content:'';width:28px;height:3px;border-radius:2px;background:var(--lightblue);}
+  .tbh-accent{color:var(--blue);}
+  .tbh-btn-shine{position:relative;overflow:hidden;}
+  .tbh-btn-shine::before{content:'';position:absolute;top:0;left:-60%;width:40%;height:100%;background:rgba(255,255,255,0.28);transform:skewX(-20deg);transition:left .5s ease;}
+  .tbh-btn-shine:hover::before{left:130%;}
 
   .tbh-header{background:var(--bg);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:100;transition:background .3s ease;}
-  .tbh-header .tbh-inner{display:flex;align-items:center;justify-content:space-between;padding:22px 40px;max-width:1280px;margin:0 auto;}
-  .tbh-header .tbh-logo{font-family:'Playfair Display',serif;font-size:22px;font-weight:600;letter-spacing:0.5px;color:var(--ink);}
-  .tbh-header .tbh-logo span{color:var(--emerald);font-style:italic;}
-  .tbh-header nav ul{display:flex;gap:36px;list-style:none;margin:0;padding:0;}
-  .tbh-header nav a{text-decoration:none;font-size:12px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);transition:color .2s;}
-  .tbh-header nav a:hover{color:var(--emerald);}
-  .tbh-header .tbh-cta{display:flex;align-items:center;gap:20px;}
-  .tbh-header .tbh-phone{font-size:13px;color:var(--muted);}
-  .tbh-header .tbh-btn{position:relative;overflow:hidden;display:inline-block;padding:11px 26px;border:1px solid var(--ink);font-size:12px;letter-spacing:1px;text-transform:uppercase;color:var(--ink);text-decoration:none;transition:all .25s;}
-  .tbh-header .tbh-btn::before{content:'';position:absolute;top:0;left:-60%;width:40%;height:100%;background:rgba(0,0,0,0.08);transform:skewX(-20deg);transition:left .5s ease;}
-  .tbh-header .tbh-btn:hover::before{left:130%;}
-  .tbh-header .tbh-btn:hover{background:var(--ink);color:var(--bg);transform:translateY(-2px);}
-  .tbh-theme-toggle{width:34px;height:34px;border:1px solid var(--line);background:transparent;cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;color:var(--ink);border-radius:50%;transition:border-color .2s;}
-  .tbh-theme-toggle:hover{border-color:var(--emerald);}
-  @media(max-width:900px){.tbh-header nav{display:none;}}
+  .tbh-header .tbh-topbar{background:var(--blue-dark);color:#dceefc;font-size:12.5px;padding:8px 40px;display:flex;justify-content:space-between;max-width:1280px;margin:0 auto;}
+  .tbh-header .tbh-topbar a{color:#dceefc;text-decoration:none;}
+  .tbh-header .tbh-inner{display:flex;align-items:center;justify-content:space-between;padding:18px 40px;max-width:1280px;margin:0 auto;}
+  .tbh-header .tbh-logo{display:flex;align-items:center;gap:10px;font-family:'Poppins',sans-serif;font-size:21px;font-weight:700;color:var(--ink);}
+  .tbh-header .tbh-logo .tbh-mark{width:34px;height:34px;border-radius:8px;background:linear-gradient(135deg,var(--lightblue),var(--blue));display:flex;align-items:center;justify-content:center;color:#fff;font-size:16px;}
+  .tbh-header .tbh-logo span{color:var(--blue);}
+  .tbh-header nav ul{display:flex;gap:30px;list-style:none;margin:0;padding:0;}
+  .tbh-header nav a{text-decoration:none;font-size:14px;font-weight:600;color:var(--ink);transition:color .2s;}
+  .tbh-header nav a:hover{color:var(--blue);}
+  .tbh-header .tbh-cta{display:flex;align-items:center;gap:16px;}
+  .tbh-header .tbh-btn{display:inline-block;padding:12px 26px;border-radius:6px;font-weight:600;font-size:14px;background:var(--blue);color:#fff;text-decoration:none;transition:background .25s, transform .2s, box-shadow .2s;}
+  .tbh-header .tbh-btn:hover{background:var(--blue-dark);transform:translateY(-2px);box-shadow:0 10px 20px -8px rgba(11,99,206,0.5);}
+  .tbh-theme-toggle{width:36px;height:36px;border-radius:50%;border:1px solid var(--line);background:transparent;cursor:pointer;font-size:15px;display:flex;align-items:center;justify-content:center;color:var(--ink);transition:border-color .2s;}
+  .tbh-theme-toggle:hover{border-color:var(--blue);}
+  .tbh-hamburger{display:none;width:38px;height:38px;border:1px solid var(--line);border-radius:8px;background:transparent;cursor:pointer;flex-direction:column;align-items:center;justify-content:center;gap:4px;}
+  .tbh-hamburger span{width:18px;height:2px;background:var(--ink);border-radius:2px;}
+  .tbh-mobile-nav{display:none;flex-direction:column;background:var(--bg);border-top:1px solid var(--line);padding:10px 40px 20px;}
+  .tbh-mobile-nav a{padding:12px 0;font-size:15px;font-weight:600;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line);}
+  .tbh-mobile-nav.tbh-open{display:flex;}
+  @media(max-width:900px){.tbh-header nav{display:none;}.tbh-header .tbh-topbar{display:none;}.tbh-hamburger{display:flex;}}
 
-  .tbh-hero{padding:50px 0 70px;}
-  .tbh-hero .tbh-inner{display:grid;grid-template-columns:1.1fr 0.9fr;gap:70px;align-items:end;max-width:1280px;margin:0 auto;padding:0 40px;perspective:1200px;}
-  .tbh-hero h1{font-family:'Playfair Display',serif;font-size:56px;font-weight:600;line-height:1.15;letter-spacing:-0.5px;margin:0 0 28px;}
+  .tbh-hero{padding:60px 0 80px;background:radial-gradient(circle at 85% 20%, rgba(79,179,232,0.15), transparent 55%);}
+  .tbh-hero .tbh-inner{display:grid;grid-template-columns:1.1fr 0.9fr;gap:60px;align-items:center;max-width:1280px;margin:0 auto;padding:0 40px;perspective:1200px;}
+  .tbh-hero h1{font-family:'Poppins',sans-serif;font-size:48px;font-weight:700;line-height:1.2;margin:0 0 22px;}
   .tbh-hero h1 .tbh-line1{color:var(--ink);display:block;}
-  .tbh-hero h1 .tbh-line2{color:var(--emerald);display:block;font-style:italic;}
-  .tbh-hero p{font-size:17px;color:var(--muted);line-height:1.7;max-width:440px;margin:0 0 36px;}
-  .tbh-hero .tbh-btn{position:relative;overflow:hidden;display:inline-flex;align-items:center;gap:10px;padding:16px 34px;background:var(--emerald);color:#fff;text-decoration:none;font-size:13px;letter-spacing:1px;text-transform:uppercase;transition:background .25s, gap .25s, transform .25s, box-shadow .25s;}
-  .tbh-hero .tbh-btn::before{content:'';position:absolute;top:0;left:-60%;width:40%;height:100%;background:rgba(255,255,255,0.25);transform:skewX(-20deg);transition:left .5s ease;}
-  .tbh-hero .tbh-btn:hover::before{left:130%;}
-  .tbh-hero .tbh-btn:hover{background:var(--emerald-dark);gap:16px;transform:translateY(-4px);box-shadow:0 14px 28px -10px rgba(31,77,61,0.45);}
-  .tbh-hero .tbh-img-placeholder{aspect-ratio:4/5;border:1px solid var(--line);display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--muted);font-size:13px;gap:8px;text-align:center;padding:20px;position:relative;background:var(--surface);box-shadow:0 30px 60px -20px rgba(26,26,26,0.15);transform-style:preserve-3d;transition:transform .15s ease-out, box-shadow .3s ease;will-change:transform;}
-  .tbh-hero .tbh-img-placeholder:hover{box-shadow:0 40px 80px -20px rgba(26,26,26,0.22);}
-  .tbh-hero .tbh-floating-badge{position:absolute;bottom:-18px;left:24px;background:var(--bg);border:1px solid var(--line);padding:12px 20px;font-size:12px;letter-spacing:0.5px;color:var(--ink);display:flex;align-items:center;gap:10px;box-shadow:0 12px 30px -8px rgba(26,26,26,0.2);transform:translateZ(40px);}
-  .tbh-hero .tbh-floating-badge .tbh-dot{width:7px;height:7px;border-radius:50%;background:var(--emerald);}
-  @media(max-width:900px){.tbh-hero .tbh-inner{grid-template-columns:1fr;}.tbh-hero h1{font-size:38px;}}
+  .tbh-hero h1 .tbh-line2{color:var(--blue);display:block;}
+  .tbh-hero p{font-size:16.5px;color:var(--muted);line-height:1.7;max-width:460px;margin:0 0 30px;}
+  .tbh-hero .tbh-btn-row{display:flex;gap:16px;flex-wrap:wrap;}
+  .tbh-hero .tbh-btn{display:inline-flex;align-items:center;gap:10px;padding:15px 30px;background:var(--blue);color:#fff;text-decoration:none;font-size:14px;font-weight:600;border-radius:8px;transition:background .25s, transform .25s, box-shadow .25s;}
+  .tbh-hero .tbh-btn:hover{background:var(--blue-dark);transform:translateY(-4px);box-shadow:0 16px 30px -10px rgba(11,99,206,0.45);}
+  .tbh-hero .tbh-btn-outline{display:inline-flex;align-items:center;gap:10px;padding:15px 30px;background:transparent;border:1.5px solid var(--line);color:var(--ink);text-decoration:none;font-size:14px;font-weight:600;border-radius:8px;transition:border-color .25s, transform .25s;}
+  .tbh-hero .tbh-btn-outline:hover{border-color:var(--blue);color:var(--blue);transform:translateY(-4px);}
+  .tbh-hero .tbh-trustrow{display:flex;gap:24px;margin-top:34px;flex-wrap:wrap;}
+  .tbh-hero .tbh-trustrow span{font-size:12.5px;color:var(--muted);display:flex;align-items:center;gap:6px;}
+  .tbh-hero .tbh-trustrow .tbh-dot{width:6px;height:6px;border-radius:50%;background:var(--blue);}
+  .tbh-hero .tbh-img-placeholder{aspect-ratio:4/3;border-radius:16px;border:1px solid var(--line);display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--muted);font-size:13px;gap:8px;text-align:center;padding:20px;position:relative;background:var(--surface);box-shadow:0 30px 60px -20px rgba(11,37,69,0.2);transform-style:preserve-3d;transition:transform .15s ease-out;will-change:transform;}
+  .tbh-hero .tbh-floating-badge{position:absolute;bottom:-18px;left:24px;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:12px 18px;font-size:12px;font-weight:600;color:var(--ink);display:flex;align-items:center;gap:10px;box-shadow:0 12px 30px -8px rgba(11,37,69,0.25);transform:translateZ(40px);}
+  .tbh-hero .tbh-floating-badge .tbh-dot{width:8px;height:8px;border-radius:50%;background:var(--blue);}
+  @media(max-width:900px){.tbh-hero .tbh-inner{grid-template-columns:1fr;}.tbh-hero h1{font-size:34px;}}
 
-  .tbh-stats{border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
-  .tbh-stats .tbh-inner{display:grid;grid-template-columns:repeat(4,1fr);max-width:1280px;margin:0 auto;}
-  .tbh-stats .tbh-cell{padding:44px 30px;text-align:center;border-left:1px solid var(--line);}
-  .tbh-stats .tbh-cell:first-child{border-left:none;}
-  .tbh-stats h3{font-family:'Playfair Display',serif;font-size:38px;font-weight:600;color:var(--ink);margin:0;}
-  .tbh-stats p{font-size:12px;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin:8px 0 0;}
-  @media(max-width:900px){.tbh-stats .tbh-inner{grid-template-columns:1fr 1fr;}.tbh-stats .tbh-cell{border-top:1px solid var(--line);}}
+  .tbh-hero-v2{padding:90px 0 60px;background:linear-gradient(135deg,var(--blue-dark) 0%,#04203f 100%);position:relative;overflow:hidden;}
+  .tbh-hero-v2::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 20% 30%, rgba(79,179,232,0.15), transparent 50%);}
+  .tbh-hero-v2 .tbh-inner{position:relative;z-index:2;display:grid;grid-template-columns:1fr 0.9fr;gap:50px;align-items:start;max-width:1280px;margin:0 auto;padding:0 40px;}
+  .tbh-hero-v2 .tbh-bg-note{position:absolute;top:16px;right:16px;font-size:10.5px;color:#7fa8d0;background:rgba(0,0,0,0.25);padding:4px 10px;border-radius:6px;z-index:3;}
+  .tbh-hero-v2 h1{font-family:'Poppins',sans-serif;font-size:44px;font-weight:700;line-height:1.2;margin:0 0 20px;color:#fff;}
+  .tbh-hero-v2 h1 .tbh-accent2{color:#6fd08a;}
+  .tbh-hero-v2 p{font-size:15.5px;color:#c3d7ea;line-height:1.7;max-width:480px;margin:0 0 26px;}
+  .tbh-hero-v2 .tbh-trustline{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:26px;}
+  .tbh-hero-v2 .tbh-google{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,0.06);padding:8px 14px;border-radius:8px;font-size:12.5px;color:#fff;}
+  .tbh-hero-v2 .tbh-stars{color:#ffb400;letter-spacing:1px;}
+  .tbh-hero-v2 .tbh-badge-pill{padding:8px 14px;border-radius:8px;font-size:12px;font-weight:700;display:flex;align-items:center;gap:6px;}
+  .tbh-hero-v2 .tbh-badge-pill.tbh-green{background:rgba(111,208,138,0.15);color:#6fd08a;border:1px solid rgba(111,208,138,0.35);}
+  .tbh-hero-v2 .tbh-btn{display:inline-flex;align-items:center;gap:10px;padding:15px 28px;background:#6fd08a;color:#04321a;text-decoration:none;font-size:14px;font-weight:700;border-radius:8px;transition:transform .25s, box-shadow .25s;}
+  .tbh-hero-v2 .tbh-btn:hover{transform:translateY(-4px);box-shadow:0 16px 28px -10px rgba(111,208,138,0.4);}
+  .tbh-quote-card{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);border-radius:16px;padding:26px;backdrop-filter:blur(6px);}
+  .tbh-quote-card select, .tbh-quote-card input, .tbh-quote-card textarea{width:100%;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);color:#fff;padding:12px 14px;border-radius:8px;font-size:13.5px;margin-bottom:12px;font-family:'Inter',sans-serif;}
+  .tbh-quote-card select{appearance:none;cursor:pointer;}
+  .tbh-quote-card ::placeholder{color:#a9bdd4;}
+  .tbh-quote-card .tbh-row2{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+  .tbh-quote-card .tbh-bullets{list-style:none;margin:0 0 14px;padding:0;}
+  .tbh-quote-card .tbh-bullets li{font-size:12.5px;color:#c3d7ea;margin-bottom:6px;display:flex;gap:8px;align-items:center;}
+  .tbh-quote-card .tbh-bullets li::before{content:'';width:5px;height:5px;border-radius:50%;background:#6fd08a;}
+  .tbh-quote-card .tbh-submit{width:100%;padding:14px;background:#6fd08a;color:#04321a;border:none;border-radius:8px;font-weight:700;font-size:14px;cursor:pointer;transition:transform .2s;}
+  .tbh-quote-card .tbh-submit:hover{transform:translateY(-2px);}
+  @media(max-width:900px){.tbh-hero-v2 .tbh-inner{grid-template-columns:1fr;}.tbh-hero-v2 h1{font-size:32px;}.tbh-quote-card .tbh-row2{grid-template-columns:1fr;}}
 
-  .tbh-trust{padding:50px 40px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .tbh-quickbar{background:var(--surface);padding:0;border-bottom:1px solid var(--line);}
+  .tbh-quickbar .tbh-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr 1fr;}
+  .tbh-quickbar a{display:flex;align-items:center;justify-content:center;gap:10px;padding:20px;font-size:14px;font-weight:600;color:var(--ink);text-decoration:none;border-right:1px solid var(--line);transition:background .2s;}
+  .tbh-quickbar a:last-child{border-right:none;}
+  .tbh-quickbar a:hover{background:var(--bg);}
+  @media(max-width:900px){.tbh-quickbar .tbh-inner{grid-template-columns:1fr;}.tbh-quickbar a{border-right:none;border-bottom:1px solid var(--line);}}
+
+  .tbh-feature-v2{padding:100px 0;}
+  .tbh-feature-v2 .tbh-inner{max-width:1200px;margin:0 auto;padding:0 40px;display:grid;grid-template-columns:0.9fr 1.1fr;gap:70px;align-items:center;}
+  .tbh-feature-v2 .tbh-circle-wrap{position:relative;width:100%;aspect-ratio:1;}
+  .tbh-feature-v2 .tbh-ring{position:absolute;inset:0;border:2px solid var(--blue);border-radius:50%;opacity:0.35;}
+  .tbh-feature-v2 .tbh-photo{position:absolute;inset:14%;border-radius:50%;background:var(--surface);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:13px;text-align:center;padding:20px;overflow:hidden;}
+  .tbh-feature-v2 h2{font-family:'Poppins',sans-serif;font-size:30px;font-weight:700;color:var(--ink);margin:0 0 30px;line-height:1.3;}
+  .tbh-feature-v2 .tbh-item{display:flex;gap:18px;margin-bottom:26px;}
+  .tbh-feature-v2 .tbh-icon-circle{width:48px;height:48px;border-radius:50%;background:var(--blue-dark);display:flex;align-items:center;justify-content:center;color:#fff;font-size:18px;flex-shrink:0;transition:transform .3s ease;}
+  .tbh-feature-v2 .tbh-item:hover .tbh-icon-circle{transform:scale(1.12) rotate(8deg);}
+  .tbh-feature-v2 h4{font-family:'Poppins',sans-serif;font-size:16.5px;font-weight:600;color:var(--ink);margin:0 0 6px;}
+  .tbh-feature-v2 p{font-size:14px;color:var(--muted);margin:0;line-height:1.6;}
+  @media(max-width:900px){.tbh-feature-v2 .tbh-inner{grid-template-columns:1fr;}}
+
+  .tbh-consult{padding:100px 0;background:var(--surface);}
+  .tbh-consult .tbh-inner{max-width:1200px;margin:0 auto;padding:0 40px;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
+  .tbh-consult .tbh-big{font-family:'Poppins',sans-serif;font-size:44px;font-weight:700;color:var(--blue);margin:0 0 6px;}
+  .tbh-consult h3{font-family:'Poppins',sans-serif;font-size:24px;font-weight:700;color:var(--ink);margin:0 0 16px;}
+  .tbh-consult p{color:var(--muted);line-height:1.7;margin:0;max-width:420px;}
+  .tbh-consult .tbh-arrow-note{margin-top:24px;font-size:13px;color:var(--blue);font-weight:600;}
+  .tbh-consult-card{background:var(--bg);border:1px solid var(--line);border-radius:16px;padding:30px;box-shadow:0 20px 50px -20px rgba(11,37,69,0.15);}
+  .tbh-consult-card h4{font-family:'Poppins',sans-serif;font-size:18px;color:var(--ink);margin:0 0 4px;}
+  .tbh-consult-card .tbh-sub{font-size:13px;color:var(--muted);margin:0 0 18px;}
+  .tbh-consult-card select, .tbh-consult-card input, .tbh-consult-card textarea{width:100%;background:var(--surface);border:1px solid var(--line);color:var(--ink);padding:12px 14px;border-radius:8px;font-size:13.5px;margin-bottom:12px;font-family:'Inter',sans-serif;}
+  .tbh-consult-card .tbh-row2{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+  .tbh-consult-card .tbh-consent{display:flex;align-items:center;gap:10px;font-size:12.5px;color:var(--muted);margin-bottom:16px;}
+  .tbh-consult-card .tbh-submit{width:100%;padding:14px;background:var(--blue);color:#fff;border:none;border-radius:8px;font-weight:700;font-size:14px;cursor:pointer;transition:background .25s, transform .2s;}
+  .tbh-consult-card .tbh-submit:hover{background:var(--blue-dark);transform:translateY(-2px);}
+  @media(max-width:900px){.tbh-consult .tbh-inner{grid-template-columns:1fr;}}
+
+  .tbh-quote-strip{padding:90px 40px;background:linear-gradient(135deg,#2c3e50,#1a2733);position:relative;overflow:hidden;}
+  .tbh-quote-strip::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 70% 40%, rgba(255,255,255,0.06), transparent 60%);}
+  .tbh-quote-strip .tbh-bg-note{position:absolute;top:16px;right:16px;font-size:10.5px;color:#9fb3c8;background:rgba(0,0,0,0.25);padding:4px 10px;border-radius:6px;z-index:3;}
+  .tbh-quote-strip .tbh-inner{position:relative;z-index:2;max-width:1000px;margin:0 auto;}
+  .tbh-quote-strip h3{font-family:'Poppins',sans-serif;font-size:30px;font-weight:700;color:#fff;text-align:center;margin:0 0 40px;}
+  .tbh-quote-strip .tbh-row2{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:20px;}
+  .tbh-quote-strip input, .tbh-quote-strip select, .tbh-quote-strip textarea{width:100%;background:transparent;border:none;border-bottom:1px solid rgba(255,255,255,0.35);color:#fff;padding:10px 4px;font-size:14px;font-family:'Inter',sans-serif;}
+  .tbh-quote-strip ::placeholder{color:#c3d2e0;}
+  .tbh-quote-strip .tbh-center{text-align:center;margin-top:30px;}
+  .tbh-quote-strip .tbh-submit{padding:15px 36px;background:var(--blue-dark);color:#fff;border:none;border-radius:30px;font-weight:700;font-size:14px;cursor:pointer;transition:transform .2s, background .25s;}
+  .tbh-quote-strip .tbh-submit:hover{background:var(--blue);transform:translateY(-3px);}
+  @media(max-width:900px){.tbh-quote-strip .tbh-row2{grid-template-columns:1fr;}}
+
+  /* COMPLIANCE STRIP */
+  .tbh-compliance{padding:100px 40px;text-align:center;background:var(--surface);}
+  .tbh-compliance h2{font-family:'Poppins',sans-serif;font-size:32px;font-weight:700;color:var(--ink);margin:0 0 16px;}
+  .tbh-compliance p{color:var(--muted);max-width:640px;margin:0 auto 50px;line-height:1.7;}
+  .tbh-compliance .tbh-logos{display:flex;justify-content:center;align-items:center;gap:50px;flex-wrap:wrap;max-width:1100px;margin:0 auto 30px;}
+  .tbh-compliance .tbh-logo-item{display:flex;flex-direction:column;align-items:center;gap:10px;font-family:'Poppins',sans-serif;font-weight:700;color:var(--ink);opacity:0.75;transition:opacity .3s ease, transform .3s ease;}
+  .tbh-compliance .tbh-logo-item:hover{opacity:1;transform:translateY(-4px);}
+  .tbh-compliance .tbh-logo-circle{width:70px;height:70px;border-radius:50%;background:var(--blue-dark);color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;text-align:center;line-height:1.3;font-weight:700;}
+  .tbh-compliance .tbh-dots{display:flex;justify-content:center;gap:8px;}
+  .tbh-compliance .tbh-dot-item{width:7px;height:7px;border-radius:50%;background:var(--line);cursor:pointer;transition:background .2s;}
+  .tbh-compliance .tbh-dot-item.tbh-active{background:var(--blue);}
+  @media(max-width:900px){.tbh-compliance .tbh-logos{gap:28px;}}
+
+  /* SPECIALTIES HEXAGON GRID */
+  .tbh-hex-section{padding:100px 40px;position:relative;overflow:hidden;}
+  .tbh-hex-section .tbh-bg-note{position:absolute;top:16px;right:16px;font-size:10.5px;color:var(--muted);background:var(--surface);padding:4px 10px;border-radius:6px;z-index:3;border:1px solid var(--line);}
+  .tbh-hex-section .tbh-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:0.9fr 1.1fr;gap:50px;align-items:center;position:relative;z-index:2;}
+  .tbh-hex-section h2{font-family:'Poppins',sans-serif;font-size:32px;font-weight:700;color:var(--ink);margin:0 0 20px;line-height:1.3;}
+  .tbh-hex-section p{color:var(--muted);line-height:1.75;margin:0 0 28px;max-width:480px;}
+  .tbh-hex-section .tbh-btn{display:inline-flex;align-items:center;gap:10px;padding:15px 30px;background:var(--blue-dark);color:#fff;text-decoration:none;font-size:14px;font-weight:600;border-radius:8px;transition:background .25s, transform .25s;}
+  .tbh-hex-section .tbh-btn:hover{background:var(--blue);transform:translateY(-4px);}
+
+  .tbh-hex-grid{display:flex;gap:6px;justify-content:center;}
+  .tbh-hex-col{display:flex;flex-direction:column;gap:6px;}
+  .tbh-hex-col.tbh-offset{margin-top:52px;}
+  .tbh-hex{position:relative;width:100px;height:115px;clip-path:polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);background:var(--blue-dark);display:flex;align-items:center;justify-content:center;color:#fff;font-size:26px;text-decoration:none;transition:transform .3s ease, background .3s ease;cursor:pointer;}
+  .tbh-hex:hover{background:var(--blue);transform:scale(1.08);z-index:5;}
+  .tbh-hex .tbh-tooltip{position:absolute;bottom:110%;left:50%;transform:translateX(-50%) translateY(6px);background:var(--ink);color:var(--bg);font-size:11.5px;font-weight:600;padding:6px 12px;border-radius:6px;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .25s ease, transform .25s ease;z-index:10;}
+  .tbh-hex:hover .tbh-tooltip{opacity:1;transform:translateX(-50%) translateY(0);}
+  @media(max-width:900px){.tbh-hex-section .tbh-inner{grid-template-columns:1fr;}.tbh-hex{width:70px;height:81px;font-size:18px;}.tbh-hex-col.tbh-offset{margin-top:37px;}}
+  @media(max-width:600px){.tbh-hex-grid{transform:scale(0.75);margin:-20px 0;}}
+  @media(max-width:480px){
+    .tbh-header .tbh-inner{padding:14px 20px;}
+    .tbh-hero-v2 .tbh-inner, .tbh-hex-section .tbh-inner, .tbh-feature-v2 .tbh-inner, .tbh-consult .tbh-inner{padding:0 20px;}
+    .tbh-hero-v2 h1{font-size:26px;}
+    .tbh-services .tbh-grid, .tbh-why .tbh-grid, .tbh-feature .tbh-grid, .tbh-specialties .tbh-grid{grid-template-columns:1fr !important;}
+    .tbh-compliance .tbh-logos{gap:20px;}
+    .tbh-compliance .tbh-logo-circle{width:56px;height:56px;font-size:10px;}
+    .tbh-quote-strip h3{font-size:24px;}
+    .tbh-consult .tbh-big{font-size:34px;}
+  }
+
+  .tbh-trust{padding:40px 40px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
   .tbh-trust .tbh-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;gap:40px;flex-wrap:wrap;justify-content:space-between;}
-  .tbh-trust .tbh-label{font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);white-space:nowrap;}
-  .tbh-trust .tbh-badges{display:flex;gap:36px;flex-wrap:wrap;}
-  .tbh-trust .tbh-badge{display:flex;align-items:center;gap:10px;font-family:'Playfair Display',serif;font-size:15px;color:var(--ink);opacity:0.55;transition:opacity .3s ease;}
+  .tbh-trust .tbh-label{font-size:12px;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);white-space:nowrap;font-weight:600;}
+  .tbh-trust .tbh-badges{display:flex;gap:32px;flex-wrap:wrap;}
+  .tbh-trust .tbh-badge{display:flex;align-items:center;gap:8px;font-family:'Poppins',sans-serif;font-size:14px;font-weight:600;color:var(--ink);opacity:0.7;transition:opacity .3s ease;}
   .tbh-trust .tbh-badge:hover{opacity:1;}
-  .tbh-trust .tbh-dot{width:6px;height:6px;border-radius:50%;background:var(--gold);}
+  .tbh-trust .tbh-dot{width:6px;height:6px;border-radius:50%;background:var(--blue);}
   @media(max-width:900px){.tbh-trust .tbh-inner{flex-direction:column;align-items:flex-start;}}
 
-  .tbh-testimonial{padding:130px 40px;text-align:center;position:relative;}
-  .tbh-testimonial .tbh-mark{font-family:'Playfair Display',serif;font-size:90px;color:var(--gold);line-height:1;opacity:0.35;margin-bottom:-10px;}
-  .tbh-testimonial blockquote{font-family:'Playfair Display',serif;font-size:30px;font-weight:500;line-height:1.5;color:var(--ink);max-width:800px;margin:0 auto 32px;font-style:italic;}
-  .tbh-testimonial .tbh-author{font-size:14px;color:var(--muted);}
-  .tbh-testimonial .tbh-author strong{color:var(--ink);font-style:normal;font-weight:500;}
-  .tbh-testimonial .tbh-stars{color:var(--gold);letter-spacing:4px;margin-bottom:24px;font-size:16px;}
-
-  .tbh-process{padding:130px 0;border-top:1px solid var(--line);background:var(--surface);transition:background .3s ease;}
-  .tbh-process .tbh-head{max-width:640px;margin:0 auto 80px;padding:0 40px;text-align:center;}
-  .tbh-process .tbh-head h2{font-family:'Playfair Display',serif;font-size:36px;font-weight:600;color:var(--ink);margin:0 0 14px;}
-  .tbh-process .tbh-head p{color:var(--muted);margin:0;}
-  .tbh-process .tbh-steps{max-width:1100px;margin:0 auto;padding:0 40px;display:grid;grid-template-columns:repeat(3,1fr);gap:0;position:relative;}
-  .tbh-process .tbh-steps::before{content:'';position:absolute;top:34px;left:12%;right:12%;height:1px;background:var(--line);}
-  .tbh-process .tbh-step{text-align:center;padding:0 24px;position:relative;}
-  .tbh-process .tbh-circle{width:68px;height:68px;border-radius:50%;background:var(--bg);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:22px;color:var(--emerald);margin:0 auto 28px;position:relative;z-index:2;box-shadow:0 0 0 8px var(--surface);}
-  .tbh-process h4{font-size:19px;font-weight:500;color:var(--ink);margin:0 0 12px;}
-  .tbh-process p{font-size:14px;color:var(--muted);line-height:1.7;margin:0;max-width:260px;margin-left:auto;margin-right:auto;}
-  @media(max-width:900px){.tbh-process .tbh-steps{grid-template-columns:1fr;gap:50px;}.tbh-process .tbh-steps::before{display:none;}}
-
-  .tbh-about{padding:130px 0;}
-  .tbh-about .tbh-inner{display:grid;grid-template-columns:0.85fr 1.15fr;gap:80px;align-items:start;max-width:1280px;margin:0 auto;padding:0 40px;}
-  .tbh-about .tbh-img-placeholder{aspect-ratio:3/4;border:1px solid var(--line);display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--muted);font-size:13px;gap:8px;text-align:center;padding:20px;position:sticky;top:100px;}
-  .tbh-about h2{font-family:'Playfair Display',serif;font-size:36px;font-weight:600;line-height:1.25;margin:0 0 24px;color:var(--ink);}
-  .tbh-about p{color:var(--muted);line-height:1.75;margin:0 0 40px;max-width:520px;}
-  .tbh-about .tbh-list{border-top:1px solid var(--line);}
-  .tbh-about .tbh-item{display:flex;gap:24px;padding:24px 0;border-bottom:1px solid var(--line);opacity:0;transform:translateY(16px);transition:opacity .5s ease,transform .5s ease;}
-  .tbh-about .tbh-item.tbh-in{opacity:1;transform:translateY(0);}
-  .tbh-about .tbh-num{font-family:'Playfair Display',serif;color:var(--gold);font-size:15px;flex-shrink:0;width:30px;}
-  .tbh-about .tbh-item p{margin:0;color:var(--ink);font-size:15px;}
-  @media(max-width:900px){.tbh-about .tbh-inner{grid-template-columns:1fr;}.tbh-about .tbh-img-placeholder{position:static;}}
-
-  .tbh-services{padding:130px 0;border-top:1px solid var(--line);}
-  .tbh-services .tbh-head{max-width:640px;margin:0 auto 70px;padding:0 40px;text-align:center;}
-  .tbh-services .tbh-head h2{font-family:'Playfair Display',serif;font-size:36px;font-weight:600;color:var(--ink);margin:0 0 14px;}
+  .tbh-services{padding:110px 0;}
+  .tbh-services .tbh-head{max-width:640px;margin:0 auto 60px;padding:0 40px;text-align:center;}
+  .tbh-services .tbh-head h2{font-family:'Poppins',sans-serif;font-size:34px;font-weight:700;color:var(--ink);margin:0 0 14px;}
   .tbh-services .tbh-head p{color:var(--muted);margin:0;}
-  .tbh-services .tbh-list{max-width:1000px;margin:0 auto;padding:0 40px;}
-  .tbh-services .tbh-row{display:grid;grid-template-columns:60px 1fr 1.6fr 24px;align-items:center;gap:24px;padding:32px 0;border-bottom:1px solid var(--line);transition:padding-left .3s ease;position:relative;}
-  .tbh-services .tbh-row:first-child{border-top:1px solid var(--line);}
-  .tbh-services .tbh-row:hover{padding-left:16px;background:var(--surface);box-shadow:0 20px 40px -20px rgba(26,26,26,0.12);}
-  .tbh-services .tbh-row-num{font-family:'Playfair Display',serif;color:var(--gold);font-size:15px;}
-  .tbh-services .tbh-row h4{font-size:19px;font-weight:500;color:var(--ink);margin:0;}
-  .tbh-services .tbh-row p{font-size:14px;color:var(--muted);margin:0;}
-  .tbh-services .tbh-arrow{color:var(--muted);font-size:18px;transition:transform .3s ease,color .3s ease;}
-  .tbh-services .tbh-row:hover .tbh-arrow{transform:translateX(6px);color:var(--emerald);}
-  @media(max-width:900px){.tbh-services .tbh-row{grid-template-columns:40px 1fr;grid-template-rows:auto auto;}.tbh-services .tbh-row p{grid-column:2;}.tbh-services .tbh-arrow{display:none;}}
+  .tbh-services .tbh-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:1200px;margin:0 auto;padding:0 40px;}
+  .tbh-services .tbh-card{background:var(--surface);border-radius:14px;padding:32px 26px;transition:transform .25s ease, box-shadow .25s ease, background .3s ease;border:1px solid transparent;}
+  .tbh-services .tbh-card:hover{transform:translateY(-8px);box-shadow:0 20px 40px -14px rgba(11,37,69,0.18);border-color:var(--line);}
+  .tbh-services .tbh-icon{width:52px;height:52px;border-radius:12px;background:linear-gradient(135deg,var(--lightblue),var(--blue));display:flex;align-items:center;justify-content:center;color:#fff;font-size:20px;font-weight:700;margin-bottom:20px;transition:transform .25s ease;}
+  .tbh-services .tbh-card:hover .tbh-icon{transform:rotate(-8deg) scale(1.08);}
+  .tbh-services h4{font-family:'Poppins',sans-serif;font-size:18px;font-weight:600;color:var(--ink);margin:0 0 10px;}
+  .tbh-services .tbh-card p{font-size:14px;color:var(--muted);margin:0;line-height:1.6;}
+  @media(max-width:900px){.tbh-services .tbh-grid{grid-template-columns:1fr 1fr;}}
 
-  .tbh-cta-strip{padding:110px 40px;text-align:center;border-top:1px solid var(--line);background:var(--surface);transition:background .3s ease;}
-  .tbh-cta-strip h3{font-family:'Playfair Display',serif;font-size:34px;font-weight:600;color:var(--ink);margin:0 0 16px;}
-  .tbh-cta-strip p{color:var(--muted);margin:0 0 32px;}
-  .tbh-cta-strip .tbh-btn{position:relative;overflow:hidden;display:inline-flex;align-items:center;gap:10px;padding:16px 36px;background:var(--ink);color:var(--bg);text-decoration:none;font-size:13px;letter-spacing:1px;text-transform:uppercase;transition:gap .25s, background .25s, transform .25s, box-shadow .25s;}
-  .tbh-cta-strip .tbh-btn::before{content:'';position:absolute;top:0;left:-60%;width:40%;height:100%;background:rgba(255,255,255,0.2);transform:skewX(-20deg);transition:left .5s ease;}
-  .tbh-cta-strip .tbh-btn:hover::before{left:130%;}
-  .tbh-cta-strip .tbh-btn:hover{gap:16px;background:var(--emerald);transform:translateY(-4px);box-shadow:0 14px 28px -10px rgba(0,0,0,0.3);}
+  .tbh-feature{padding:100px 0;background:var(--surface);transition:background .3s ease;}
+  .tbh-feature .tbh-inner{max-width:1200px;margin:0 auto;padding:0 40px;}
+  .tbh-feature .tbh-head{text-align:center;max-width:640px;margin:0 auto 60px;}
+  .tbh-feature .tbh-head h2{font-family:'Poppins',sans-serif;font-size:32px;font-weight:700;color:var(--ink);margin:0 0 14px;}
+  .tbh-feature .tbh-head p{color:var(--muted);margin:0;}
+  .tbh-feature .tbh-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;}
+  .tbh-feature .tbh-item{text-align:center;}
+  .tbh-feature .tbh-circle{width:64px;height:64px;border-radius:50%;background:var(--bg);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:24px;color:var(--blue);margin:0 auto 20px;transition:transform .3s ease;}
+  .tbh-feature .tbh-item:hover .tbh-circle{transform:translateY(-6px) rotate(6deg);}
+  .tbh-feature h4{font-family:'Poppins',sans-serif;font-size:16px;font-weight:600;color:var(--ink);margin:0 0 10px;}
+  .tbh-feature p{font-size:13.5px;color:var(--muted);margin:0;line-height:1.6;}
+  @media(max-width:900px){.tbh-feature .tbh-grid{grid-template-columns:1fr 1fr;}}
 
-  .tbh-footer{padding:80px 40px 30px;}
-  .tbh-footer .tbh-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1.3fr;gap:50px;max-width:1280px;margin:0 auto 60px;}
-  .tbh-footer .tbh-logo{font-family:'Playfair Display',serif;font-size:22px;font-weight:600;color:var(--ink);margin-bottom:16px;}
-  .tbh-footer .tbh-logo span{color:var(--emerald);font-style:italic;}
-  .tbh-footer p{font-size:14px;line-height:1.75;color:var(--muted);margin:0;max-width:280px;}
-  .tbh-footer h5{font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin:0 0 18px;}
+  .tbh-specialties{padding:100px 0;}
+  .tbh-specialties .tbh-head{max-width:680px;margin:0 auto 50px;padding:0 40px;text-align:center;}
+  .tbh-specialties .tbh-head h2{font-family:'Poppins',sans-serif;font-size:32px;font-weight:700;color:var(--ink);margin:0 0 14px;}
+  .tbh-specialties .tbh-head p{color:var(--muted);margin:0;}
+  .tbh-specialties .tbh-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:16px;max-width:1200px;margin:0 auto;padding:0 40px;}
+  .tbh-specialties .tbh-pill{background:var(--surface);border-radius:12px;padding:20px 10px;text-align:center;font-size:12.5px;font-weight:600;color:var(--ink);transition:all .25s ease;cursor:default;}
+  .tbh-specialties .tbh-pill:hover{background:var(--blue);color:#fff;transform:translateY(-4px);}
+  @media(max-width:900px){.tbh-specialties .tbh-grid{grid-template-columns:repeat(3,1fr);}}
+
+  .tbh-why{padding:110px 0;background:var(--surface);transition:background .3s ease;}
+  .tbh-why .tbh-head{max-width:640px;margin:0 auto 60px;padding:0 40px;text-align:center;}
+  .tbh-why .tbh-head h2{font-family:'Poppins',sans-serif;font-size:34px;font-weight:700;color:var(--ink);margin:0 0 14px;}
+  .tbh-why .tbh-head p{color:var(--muted);margin:0;}
+  .tbh-why .tbh-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:1200px;margin:0 auto;padding:0 40px;}
+  .tbh-why .tbh-card{background:var(--bg);border-radius:14px;padding:30px 26px;border:1px solid var(--line);transition:transform .25s ease, box-shadow .25s ease;}
+  .tbh-why .tbh-card:hover{transform:translateY(-6px);box-shadow:0 20px 40px -16px rgba(11,37,69,0.15);}
+  .tbh-why .tbh-num{font-family:'Poppins',sans-serif;color:var(--lightblue);font-size:26px;font-weight:700;margin-bottom:14px;}
+  .tbh-why h4{font-family:'Poppins',sans-serif;font-size:17px;font-weight:600;color:var(--ink);margin:0 0 10px;}
+  .tbh-why p{font-size:14px;color:var(--muted);margin:0;line-height:1.6;}
+  @media(max-width:900px){.tbh-why .tbh-grid{grid-template-columns:1fr 1fr;}}
+
+  .tbh-testimonial{padding:110px 40px;text-align:center;}
+  .tbh-testimonial .tbh-mark{font-family:'Poppins',sans-serif;font-size:80px;color:var(--lightblue);line-height:1;opacity:0.4;margin-bottom:-10px;}
+  .tbh-testimonial blockquote{font-family:'Poppins',sans-serif;font-size:26px;font-weight:600;line-height:1.5;color:var(--ink);max-width:780px;margin:0 auto 28px;}
+  .tbh-testimonial .tbh-author{font-size:14px;color:var(--muted);}
+  .tbh-testimonial .tbh-author strong{color:var(--ink);font-weight:600;}
+  .tbh-testimonial .tbh-stars{color:var(--blue);letter-spacing:4px;margin-bottom:20px;font-size:16px;}
+
+  .tbh-cta-strip{padding:90px 40px;text-align:center;background:linear-gradient(135deg,var(--blue-dark),var(--blue));border-radius:0;}
+  .tbh-cta-strip h3{font-family:'Poppins',sans-serif;font-size:32px;font-weight:700;color:#fff;margin:0 0 14px;}
+  .tbh-cta-strip p{color:#d6ebfb;margin:0 0 30px;}
+  .tbh-cta-strip .tbh-btn{display:inline-flex;align-items:center;gap:10px;padding:16px 34px;background:#fff;color:var(--blue-dark);text-decoration:none;font-size:14px;font-weight:700;border-radius:8px;transition:transform .25s, box-shadow .25s;}
+  .tbh-cta-strip .tbh-btn:hover{transform:translateY(-4px);box-shadow:0 16px 32px -10px rgba(0,0,0,0.35);}
+
+  .tbh-footer{padding:70px 40px 30px;}
+  .tbh-footer .tbh-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1.3fr;gap:44px;max-width:1280px;margin:0 auto 50px;}
+  .tbh-footer .tbh-logo{display:flex;align-items:center;gap:10px;font-family:'Poppins',sans-serif;font-size:20px;font-weight:700;color:var(--ink);margin-bottom:14px;}
+  .tbh-footer .tbh-logo .tbh-mark{width:30px;height:30px;border-radius:7px;background:linear-gradient(135deg,var(--lightblue),var(--blue));display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;}
+  .tbh-footer .tbh-logo span{color:var(--blue);}
+  .tbh-footer p{font-size:14px;line-height:1.7;color:var(--muted);margin:0;max-width:280px;}
+  .tbh-footer h5{font-family:'Poppins',sans-serif;font-size:14px;color:var(--ink);margin:0 0 16px;}
   .tbh-footer ul{list-style:none;margin:0;padding:0;}
-  .tbh-footer li{margin-bottom:12px;font-size:14px;}
-  .tbh-footer a{color:var(--ink);text-decoration:none;transition:color .2s;}
-  .tbh-footer a:hover{color:var(--emerald);}
-  .tbh-footer .tbh-bottom{max-width:1280px;margin:0 auto;padding-top:24px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);text-align:center;letter-spacing:0.5px;}
+  .tbh-footer li{margin-bottom:11px;font-size:14px;}
+  .tbh-footer a{color:var(--muted);text-decoration:none;transition:color .2s;}
+  .tbh-footer a:hover{color:var(--blue);}
+  .tbh-footer .tbh-bottom{max-width:1280px;margin:0 auto;padding-top:24px;border-top:1px solid var(--line);font-size:13px;color:var(--muted);text-align:center;}
   @media(max-width:900px){.tbh-footer .tbh-grid{grid-template-columns:1fr 1fr;}}
 </style>
 </head>
 <body>
 
 <header class="tbh-header">
+  <div class="tbh-topbar">
+    <span>📞 (555) 123-4567 &nbsp;|&nbsp; ✉️ info@truebillingsolutions.com</span>
+    <span>📍 New York, NY</span>
+  </div>
   <div class="tbh-inner">
-    <div class="tbh-logo">True<span>Billing</span></div>
+    <div class="tbh-logo"><span class="tbh-mark">✓</span>True<span>Billing</span> Solutions</div>
     <nav>
       <ul>
         <li><a href="/">Home</a></li>
@@ -173,31 +304,72 @@
       </ul>
     </nav>
     <div class="tbh-cta">
-      <span class="tbh-phone">(555) 123-4567</span>
       <button class="tbh-theme-toggle" onclick="tbhToggleTheme()" title="Toggle theme">◐</button>
-      <a href="/contact" class="tbh-btn">Get Started</a>
+      <a href="/contact" class="tbh-btn tbh-btn-shine">Get Free Audit</a>
+      <button class="tbh-hamburger" onclick="tbhToggleMobileNav()" aria-label="Menu"><span></span><span></span><span></span></button>
     </div>
+  </div>
+  <div class="tbh-mobile-nav" id="tbh-mobile-nav">
+    <a href="/">Home</a>
+    <a href="/about">About</a>
+    <a href="/services">Services</a>
+    <a href="/specialties">Specialties</a>
+    <a href="/benefits">Benefits</a>
+    <a href="/blog">Blog</a>
+    <a href="/contact">Contact</a>
   </div>
 </header>
 
-<section class="tbh-hero">
+<section class="tbh-hero-v2">
+  <div class="tbh-bg-note">🖼️ BG: blurred office/city skyline (client to provide)</div>
   <div class="tbh-inner">
     <div class="tbh-fade">
-      <div class="tbh-eyebrow">Medical billing, done right</div>
-      <h1><span class="tbh-line1">Maximize your revenue,</span><span class="tbh-line2">minimize the hassle</span></h1>
-      <p>TrueBilling delivers full-service medical billing and revenue cycle management so your practice gets paid faster, with fewer denials and less administrative burden.</p>
-      <a href="/contact" class="tbh-btn">Get a free audit →</a>
+      <h1>#1 Medical Billing<br>Company in <span class="tbh-accent2">NY</span></h1>
+      <p>True Billing Solutions leads as a top medical billing company with cutting-edge technology and certified skilled professionals. Connect with our RCM experts today to optimize your practice processes and uplift its revenue.</p>
+      <div class="tbh-trustline">
+        <div class="tbh-google"><span class="tbh-stars">★★★★★</span> 189 reviews</div>
+        <div class="tbh-badge-pill tbh-green">✓ AAPC Certified</div>
+        <div class="tbh-badge-pill tbh-green">✓ HIPAA Compliant</div>
+      </div>
+      <a href="/contact" class="tbh-btn tbh-btn-shine">Speak To An Expert Today</a>
     </div>
-    <div class="tbh-img-placeholder tbh-fade">
-      🖼️ IMAGE PLACEHOLDER<br><span style="font-size:11px;">Portrait: physician or billing specialist (client to provide)</span>
-      <div class="tbh-floating-badge"><span class="tbh-dot"></span>HIPAA Compliant</div>
+    <div class="tbh-quote-card tbh-fade">
+      <select><option>Select Service Type</option></select>
+      <ul class="tbh-bullets">
+        <li>Specific to your Specialty</li>
+        <li>Completed on your Software</li>
+        <li>Increased Profitability</li>
+      </ul>
+      <select><option>Select Healthcare Type</option></select>
+      <div class="tbh-row2">
+        <input type="text" placeholder="Full Name">
+        <input type="text" placeholder="Email">
+      </div>
+      <div class="tbh-row2">
+        <input type="text" placeholder="🇺🇸 (201) 555-0123">
+        <input type="text" placeholder="Website (Optional)">
+      </div>
+      <div class="tbh-row2">
+        <select><option>Reach You Via</option></select>
+        <select><option>Preferred Time</option></select>
+      </div>
+      <textarea rows="2" placeholder="Message"></textarea>
+      <button class="tbh-submit">Get Started</button>
     </div>
   </div>
 </section>
 
+<div class="tbh-quickbar">
+  <div class="tbh-inner">
+    <a href="/contact">🩺 Free Practice Audit</a>
+    <a href="/contact">💬 Connect With Us</a>
+    <a href="tel:5551234567">📞 (555) 123-4567 — Talk To An Expert Today</a>
+  </div>
+</div>
+
 <section class="tbh-trust">
   <div class="tbh-inner">
-    <span class="tbh-label">Trusted &amp; compliant</span>
+    <span class="tbh-label">Trusted &amp; Compliant</span>
     <div class="tbh-badges">
       <span class="tbh-badge"><span class="tbh-dot"></span>HIPAA Compliant</span>
       <span class="tbh-badge"><span class="tbh-dot"></span>AAPC Certified Coders</span>
@@ -207,46 +379,124 @@
   </div>
 </section>
 
-<section class="tbh-stats">
-  <div class="tbh-inner">
-    <div class="tbh-cell tbh-fade"><h3 class="tbh-count" data-target="98">0</h3><p>Clean claim rate %</p></div>
-    <div class="tbh-cell tbh-fade"><h3 class="tbh-count" data-target="15">0</h3><p>Years experience</p></div>
-    <div class="tbh-cell tbh-fade"><h3 class="tbh-count" data-target="30">0</h3><p>Avg. revenue increase %</p></div>
-    <div class="tbh-cell tbh-fade"><h3>24/7</h3><p>Support available</p></div>
+<section class="tbh-services">
+  <div class="tbh-head tbh-fade">
+    <div class="tbh-eyebrow" style="justify-content:center;">What we do</div>
+    <h2>Full-Service <span class="tbh-accent">Medical Billing</span> Company</h2>
+    <p>Gain greater control over your practice's financial health and receivables with our full-service solutions.</p>
+  </div>
+  <div class="tbh-grid">
+    <div class="tbh-card tbh-fade"><div class="tbh-icon">$</div><h4>Medical Billing Services</h4><p>Precise billing processes ensure claims are handled accurately, so payments arrive without delays.</p></div>
+    <div class="tbh-card tbh-fade"><div class="tbh-icon">✓</div><h4>Credentialing &amp; Enrollment</h4><p>We get you properly credentialed with insurers quickly, keeping your information accurate and current.</p></div>
+    <div class="tbh-card tbh-fade"><div class="tbh-icon">#</div><h4>Medical Coding Services</h4><p>Updated ICD-10 and CPT coding to maximize reimbursements and minimize claim errors.</p></div>
+    <div class="tbh-card tbh-fade"><div class="tbh-icon">!</div><h4>Denial Management</h4><p>We identify root causes, resolve disputes, and file timely appeals to improve claim outcomes.</p></div>
+    <div class="tbh-card tbh-fade"><div class="tbh-icon">⇄</div><h4>Out-of-Network Billing</h4><p>Our expertise ensures you avoid underpayments and receive timely out-of-network compensation.</p></div>
+    <div class="tbh-card tbh-fade"><div class="tbh-icon">↻</div><h4>Revenue Cycle Management</h4><p>Services tailored to your specialty to help you boost profits and grow your practice efficiently.</p></div>
   </div>
 </section>
 
-<section class="tbh-about">
+<section class="tbh-feature-v2">
   <div class="tbh-inner">
-    <div class="tbh-img-placeholder tbh-fade">
-      🖼️ IMAGE PLACEHOLDER<br><span style="font-size:11px;">Office or team photo (client to provide)</span>
+    <div class="tbh-circle-wrap tbh-fade">
+      <div class="tbh-ring"></div>
+      <div class="tbh-photo">🖼️ IMAGE PLACEHOLDER<br><span style="font-size:11px;">Doctor/specialist photo (client to provide)</span></div>
     </div>
     <div class="tbh-fade">
-      <div class="tbh-eyebrow">About TrueBilling</div>
-      <h2>We handle billing, so <span class="tbh-h2-accent">you can focus on patient care</span></h2>
-      <p>TrueBilling provides customer-focused, full-service medical billing and accounts receivable management to practices nationwide. Our specialists work every claim to maximize your reimbursement and reduce your administrative load.</p>
-      <div class="tbh-list" id="tbh-about-list">
-        <div class="tbh-item"><span class="tbh-num">01</span><p>Faster claim submission and fewer denials</p></div>
-        <div class="tbh-item"><span class="tbh-num">02</span><p>Reduced days in accounts receivable</p></div>
-        <div class="tbh-item"><span class="tbh-num">03</span><p>Transparent monthly reporting</p></div>
-        <div class="tbh-item"><span class="tbh-num">04</span><p>Dedicated billing specialist for your practice</p></div>
+      <h2>Stay Ahead in the Ever-Changing Healthcare Industry with <span class="tbh-accent">True Billing</span></h2>
+      <div class="tbh-item"><div class="tbh-icon-circle">💬</div><div><h4>Personalized Advice</h4><p>Strategic support from a dedicated, engaged account manager.</p></div></div>
+      <div class="tbh-item"><div class="tbh-icon-circle">⚙</div><div><h4>Technology Solutions</h4><p>Seamless integration with the latest EHR, PM, and billing modules.</p></div></div>
+      <div class="tbh-item"><div class="tbh-icon-circle">♻</div><div><h4>Adapt to Industry Changes</h4><p>Navigate the shifting healthcare landscape with confidence.</p></div></div>
+      <div class="tbh-item"><div class="tbh-icon-circle">📊</div><div><h4>Advanced Analytics &amp; Reports</h4><p>Actionable reports that highlight trends and improvement areas.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="tbh-specialties">
+  <div class="tbh-head tbh-fade">
+    <div class="tbh-eyebrow" style="justify-content:center;">Specialties</div>
+    <h2>We Cover <span class="tbh-accent">All Billing Specialties</span></h2>
+    <p>Custom-tailored billing services to meet the specific needs of each specialty.</p>
+  </div>
+  <div class="tbh-grid">
+    <div class="tbh-pill tbh-fade">Mental Health</div>
+    <div class="tbh-pill tbh-fade">Cardiology</div>
+    <div class="tbh-pill tbh-fade">Radiology</div>
+    <div class="tbh-pill tbh-fade">Dermatology</div>
+    <div class="tbh-pill tbh-fade">Pediatrics</div>
+    <div class="tbh-pill tbh-fade">Orthopedic</div>
+    <div class="tbh-pill tbh-fade">Neurology</div>
+    <div class="tbh-pill tbh-fade">Urology</div>
+    <div class="tbh-pill tbh-fade">Podiatry</div>
+    <div class="tbh-pill tbh-fade">Pain Mgmt.</div>
+    <div class="tbh-pill tbh-fade">Oncology</div>
+    <div class="tbh-pill tbh-fade">+ 40 More</div>
+  </div>
+</section>
+
+<section class="tbh-hex-section">
+  <div class="tbh-bg-note">🖼️ BG: blurred office interior (client to provide)</div>
+  <div class="tbh-inner">
+    <div class="tbh-fade">
+      <h2>True Billing Covers All <span class="tbh-accent">Medical Billing Specialties</span></h2>
+      <p>We know that healthcare specialties are as unique as the patients they serve. That's why we offer specialized medical billing services custom-tailored to meet the specific needs of each specialty — including cardiology, neurology, pediatrics, orthopedic, dermatology, and more.</p>
+      <a href="/specialties" class="tbh-btn tbh-btn-shine">View All Specialties →</a>
+    </div>
+    <div class="tbh-hex-grid tbh-fade">
+      <div class="tbh-hex-col">
+        <a href="/specialties/cardiology" class="tbh-hex">❤️<span class="tbh-tooltip">Cardiology Billing</span></a>
+        <a href="/specialties/orthopedic" class="tbh-hex">🦴<span class="tbh-tooltip">Orthopedic Billing</span></a>
+        <a href="/specialties/oncology" class="tbh-hex">🎗️<span class="tbh-tooltip">Oncology Billing</span></a>
+      </div>
+      <div class="tbh-hex-col tbh-offset">
+        <a href="/specialties/neurology" class="tbh-hex">🧠<span class="tbh-tooltip">Neurology Billing</span></a>
+        <a href="/specialties/geriatric" class="tbh-hex">🧓<span class="tbh-tooltip">Geriatric Billing</span></a>
+      </div>
+      <div class="tbh-hex-col">
+        <a href="/specialties/radiology" class="tbh-hex">📡<span class="tbh-tooltip">Radiology Billing</span></a>
+        <a href="/specialties/urology" class="tbh-hex">🫘<span class="tbh-tooltip">Urology Billing</span></a>
+        <a href="/specialties/podiatry" class="tbh-hex">🦶<span class="tbh-tooltip">Podiatry Billing</span></a>
+      </div>
+      <div class="tbh-hex-col tbh-offset">
+        <a href="/specialties/pediatrics" class="tbh-hex">👶<span class="tbh-tooltip">Pediatrics Billing</span></a>
+        <a href="/specialties/gastro" class="tbh-hex">🩺<span class="tbh-tooltip">Gastroenterology Billing</span></a>
+      </div>
+      <div class="tbh-hex-col">
+        <a href="/specialties/dermatology" class="tbh-hex">🧴<span class="tbh-tooltip">Dermatology Billing</span></a>
+        <a href="/specialties/ophthalmology" class="tbh-hex">👁️<span class="tbh-tooltip">Ophthalmology Billing</span></a>
+        <a href="/specialties/mental-health" class="tbh-hex">💬<span class="tbh-tooltip">Mental Health Billing</span></a>
       </div>
     </div>
   </div>
 </section>
 
-<section class="tbh-services">
-  <div class="tbh-head tbh-fade">
-    <div class="tbh-eyebrow" style="justify-content:center;">What we do</div>
-    <h2>How TrueBilling <span class="tbh-h2-accent">works with you</span></h2>
-    <p>End-to-end revenue cycle support built around your practice's needs.</p>
+<section class="tbh-compliance">
+  <h2>Compliance and <span class="tbh-accent">Certifications</span></h2>
+  <p>We are certified by the American Academy of Professional Coders (AAPC) as CPB and CPC, and are fully compliant with all HIPAA and CMS regulations.</p>
+  <div class="tbh-logos tbh-fade">
+    <div class="tbh-logo-item"><div class="tbh-logo-circle">HIPAA</div>Compliant</div>
+    <div class="tbh-logo-item"><div class="tbh-logo-circle">CMS</div>Certified</div>
+    <div class="tbh-logo-item"><div class="tbh-logo-circle">CPC</div>Certification</div>
+    <div class="tbh-logo-item"><div class="tbh-logo-circle">★★★★★</div>Google Reviews</div>
+    <div class="tbh-logo-item"><div class="tbh-logo-circle">CPB</div>Certification</div>
   </div>
-  <div class="tbh-list">
-    <div class="tbh-row tbh-fade"><span class="tbh-row-num">01</span><h4>Increase Revenue</h4><p>Timely claims and fewer denials mean stronger collections.</p><span class="tbh-arrow">→</span></div>
-    <div class="tbh-row tbh-fade"><span class="tbh-row-num">02</span><h4>Reduce A/R Time</h4><p>Proactive follow-up speeds up every payment cycle.</p><span class="tbh-arrow">→</span></div>
-    <div class="tbh-row tbh-fade"><span class="tbh-row-num">03</span><h4>Ease Staffing Load</h4><p>Outsource billing and cut in-house overhead.</p><span class="tbh-arrow">→</span></div>
-    <div class="tbh-row tbh-fade"><span class="tbh-row-num">04</span><h4>Workflow Efficiency</h4><p>Streamlined processes reduce administrative burden.</p><span class="tbh-arrow">→</span></div>
-    <div class="tbh-row tbh-fade"><span class="tbh-row-num">05</span><h4>Full Transparency</h4><p>Clear reporting gives you complete practice control.</p><span class="tbh-arrow">→</span></div>
+  <div class="tbh-dots">
+    <span class="tbh-dot-item"></span><span class="tbh-dot-item"></span><span class="tbh-dot-item tbh-active"></span><span class="tbh-dot-item"></span><span class="tbh-dot-item"></span>
+  </div>
+</section>
+
+<section class="tbh-why">
+  <div class="tbh-head tbh-fade">
+    <div class="tbh-eyebrow" style="justify-content:center;">Why choose us</div>
+    <h2>Don't Settle for <span class="tbh-accent">Average Profits</span></h2>
+    <p>Maximize your revenue and gain a deeper understanding of your healthcare business.</p>
+  </div>
+  <div class="tbh-grid">
+    <div class="tbh-card tbh-fade"><div class="tbh-num">01</div><h4>Free Practice Assessment</h4><p>Complimentary audit to identify improvement areas within your practice.</p></div>
+    <div class="tbh-card tbh-fade"><div class="tbh-num">02</div><h4>Revenue Cycle Experts</h4><p>Specialized billing, coding, and collections experts optimize your payment cycle.</p></div>
+    <div class="tbh-card tbh-fade"><div class="tbh-num">03</div><h4>Increased Profitability</h4><p>Increase collections by 20% and reduce staffing costs with our RCM team.</p></div>
+    <div class="tbh-card tbh-fade"><div class="tbh-num">04</div><h4>Dedicated Account Manager</h4><p>A dedicated manager ensures your practice gets specialized support and care.</p></div>
+    <div class="tbh-card tbh-fade"><div class="tbh-num">05</div><h4>No Fixed Agreement</h4><p>No long-term contracts — cancel anytime, no questions asked.</p></div>
+    <div class="tbh-card tbh-fade"><div class="tbh-num">06</div><h4>Specialty-Specific Software</h4><p>Specialty-specific EHR/EMR software for accurate billing and coding.</p></div>
   </div>
 </section>
 
@@ -254,76 +504,113 @@
   <div class="tbh-fade">
     <div class="tbh-mark">"</div>
     <div class="tbh-stars">★★★★★</div>
-    <blockquote>Switching to TrueBilling increased our monthly collections within the first quarter, and denials dropped noticeably. Their team feels like an extension of our own practice.</blockquote>
+    <blockquote>Switching to True Billing Solutions increased our monthly collections within the first quarter, and denials dropped noticeably. Their team feels like an extension of our own practice.</blockquote>
     <div class="tbh-author"><strong>Dr. Sarah Bennett</strong> — Family Medicine, Austin TX</div>
-  </div>
-</section>
-
-<section class="tbh-process">
-  <div class="tbh-head tbh-fade">
-    <div class="tbh-eyebrow" style="justify-content:center;">Our process</div>
-    <h2>Getting started <span class="tbh-h2-accent">is simple</span></h2>
-    <p>A clear, guided onboarding so your practice sees results from month one.</p>
-  </div>
-  <div class="tbh-steps">
-    <div class="tbh-step tbh-fade">
-      <div class="tbh-circle">01</div>
-      <h4>Free Practice Audit</h4>
-      <p>We review your current billing, denials, and A/R to spot revenue leaks.</p>
-    </div>
-    <div class="tbh-step tbh-fade">
-      <div class="tbh-circle">02</div>
-      <h4>Seamless Onboarding</h4>
-      <p>Your dedicated billing specialist sets up systems with zero disruption.</p>
-    </div>
-    <div class="tbh-step tbh-fade">
-      <div class="tbh-circle">03</div>
-      <h4>Ongoing Optimization</h4>
-      <p>Monthly reporting and continuous follow-up to keep collections growing.</p>
-    </div>
   </div>
 </section>
 
 <section class="tbh-cta-strip">
   <div class="tbh-fade">
-    <h3>Ready to improve <span class="tbh-h2-accent">your practice's revenue?</span></h3>
+    <h3>Ready to improve your practice's revenue?</h3>
     <p>Get a free, no-obligation practice audit from our billing specialists today.</p>
-    <a href="/contact" class="tbh-btn">Contact us now →</a>
+    <a href="/contact" class="tbh-btn tbh-btn-shine">Contact Us Now →</a>
+  </div>
+</section>
+
+<section class="tbh-consult">
+  <div class="tbh-inner">
+    <div class="tbh-fade">
+      <div class="tbh-big">24/7</div>
+      <h3>Practice Management Consultants</h3>
+      <p>Our professional medical billing team works with hundreds of medical practices and health centers to improve profitability, strengthen compliance, and adapt better to industry change.</p>
+      <div class="tbh-arrow-note">With access to real specialists → not a call center</div>
+    </div>
+    <div class="tbh-consult-card tbh-fade">
+      <h4>Talk to a Medical Billing Expert</h4>
+      <p class="tbh-sub">Schedule a Consultation</p>
+      <div class="tbh-row2">
+        <select><option>Select Service Type</option></select>
+        <select><option>Select Healthcare Type</option></select>
+      </div>
+      <div class="tbh-row2">
+        <input type="text" placeholder="Full Name">
+        <input type="text" placeholder="Email">
+      </div>
+      <div class="tbh-row2">
+        <input type="text" placeholder="🇺🇸 (201) 555-0123">
+        <input type="text" placeholder="Website (Optional)">
+      </div>
+      <div class="tbh-row2">
+        <select><option>Reach You Via</option></select>
+        <select><option>Preferred Time</option></select>
+      </div>
+      <textarea rows="2" placeholder="Message"></textarea>
+      <div class="tbh-consent">Do you agree to receive SMS from True Billing Inc? &nbsp; ○ Yes &nbsp; ○ No</div>
+      <button class="tbh-submit">Book Now</button>
+    </div>
+  </div>
+</section>
+
+<section class="tbh-quote-strip">
+  <div class="tbh-bg-note">🖼️ BG: blurred desk/stethoscope photo (client to provide)</div>
+  <div class="tbh-inner tbh-fade">
+    <h3>Looking for a Medical Billing Quote?</h3>
+    <div class="tbh-row2">
+      <input type="text" placeholder="Full Name">
+      <input type="text" placeholder="Email">
+    </div>
+    <div class="tbh-row2">
+      <input type="text" placeholder="🇺🇸 (201) 555-0123">
+      <input type="text" placeholder="Business Name">
+    </div>
+    <div class="tbh-row2">
+      <select><option>Select State</option></select>
+      <select><option>Select Service Type</option></select>
+    </div>
+    <div class="tbh-row2">
+      <select><option>Select Communication Preference</option></select>
+      <select><option>Select Preferred Time</option></select>
+    </div>
+    <textarea rows="2" placeholder="Message"></textarea>
+    <div class="tbh-center">
+      <button class="tbh-submit">Request a Quote</button>
+    </div>
   </div>
 </section>
 
 <footer class="tbh-footer">
   <div class="tbh-grid">
     <div>
-      <div class="tbh-logo">True<span>Billing</span></div>
-      <p>TrueBilling offers full-service medical billing and accounts receivable management to practices nationwide, focused on maximizing reimbursement.</p>
+      <div class="tbh-logo"><span class="tbh-mark">✓</span>True<span>Billing</span></div>
+      <p>True Billing Solutions offers full-service medical billing and accounts receivable management to practices nationwide, focused on maximizing reimbursement.</p>
     </div>
     <div>
       <h5>Services</h5>
       <ul>
-        <li><a href="/services">Claims Management</a></li>
-        <li><a href="/services">Practice Management</a></li>
+        <li><a href="/services">Medical Billing</a></li>
         <li><a href="/services">Credentialing</a></li>
+        <li><a href="/services">Medical Coding</a></li>
         <li><a href="/specialties">Specialties</a></li>
       </ul>
     </div>
     <div>
-      <h5>Benefits</h5>
+      <h5>Company</h5>
       <ul>
-        <li><a href="/benefits">How You Benefit</a></li>
-        <li><a href="/about">How We Do It</a></li>
+        <li><a href="/about">About Us</a></li>
+        <li><a href="/benefits">Benefits</a></li>
+        <li><a href="/blog">Blog</a></li>
       </ul>
     </div>
     <div>
       <h5>Our Office</h5>
       <ul>
-        <li>support@truebilling.com</li>
+        <li>info@truebillingsolutions.com</li>
         <li>(555) 123-4567</li>
         <li>Mon – Fri, 9AM – 6PM</li>
       </ul>
     </div>
   </div>
-  <div class="tbh-bottom">© TrueBilling 2026 — All Rights Reserved</div>
+  <div class="tbh-bottom">© True Billing Solutions 2026 — All Rights Reserved</div>
 </footer>
 
 <script>
@@ -332,39 +619,14 @@ document.addEventListener('DOMContentLoaded', function(){
   var observer=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('tbh-in');}});},{threshold:0.15});
   document.querySelectorAll('.tbh-fade').forEach(function(el){observer.observe(el);});
 
-  var counters=document.querySelectorAll('.tbh-count');var started=false;
-  var statObserver=new IntersectionObserver(function(entries){
-    entries.forEach(function(entry){
-      if(entry.isIntersecting && !started){
-        started=true;
-        counters.forEach(function(el){
-          var target=parseInt(el.getAttribute('data-target'));var current=0;var step=Math.max(1,Math.floor(target/40));
-          var timer=setInterval(function(){current+=step;if(current>=target){current=target;clearInterval(timer);}el.textContent=current;},30);
-        });
-      }
-    });
-  },{threshold:0.4});
-  if(counters.length) statObserver.observe(counters[0].closest('section'));
-
-  var items=document.querySelectorAll('#tbh-about-list .tbh-item');
-  var listObserver=new IntersectionObserver(function(entries){
-    entries.forEach(function(entry){
-      if(entry.isIntersecting){
-        items.forEach(function(it,idx){setTimeout(function(){it.classList.add('tbh-in');},idx*120);});
-        listObserver.disconnect();
-      }
-    });
-  },{threshold:0.3});
-  if(items.length) listObserver.observe(items[0]);
-
-  var tiltEl = document.querySelector('.tbh-hero .tbh-img-placeholder');
+  var tiltEl = document.getElementById('tbh-tilt');
   if(tiltEl){
     tiltEl.addEventListener('mousemove', function(e){
       var rect = tiltEl.getBoundingClientRect();
       var x = e.clientX - rect.left;
       var y = e.clientY - rect.top;
-      var rotateY = ((x / rect.width) - 0.5) * 16;
-      var rotateX = ((y / rect.height) - 0.5) * -16;
+      var rotateY = ((x / rect.width) - 0.5) * 14;
+      var rotateX = ((y / rect.height) - 0.5) * -14;
       tiltEl.style.transform = 'rotateX(' + rotateX + 'deg) rotateY(' + rotateY + 'deg) scale(1.02)';
     });
     tiltEl.addEventListener('mouseleave', function(){
@@ -377,6 +639,10 @@ function tbhToggleTheme(){
   var next=cur==='dark'?'light':'dark';
   document.documentElement.setAttribute('data-theme',next);
   localStorage.setItem('tbh-theme',next);
+}
+function tbhToggleMobileNav(){
+  var nav = document.getElementById('tbh-mobile-nav');
+  if(nav) nav.classList.toggle('tbh-open');
 }
 </script>
 
